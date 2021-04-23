@@ -168,24 +168,12 @@ const renderSliderItems = () => {
       </div>
         `;
 
-        // if (i === 0) {
-        //     coloreado.style.backgroundColor = "red";
-        // }
         htmlString += sliderHTMLString;
         sliderHolder.innerHTML += sliderHTMLString;
 
     }
 };
-// const marcadores = () => {
-//     const openModalBookmark = document.querySelectorAll('.marcador');
-//     openModalBookmark.forEach((mark, i)=>{
-//         mark.addEventListener('click', () => {
-//             modal_container.classList.add('show');
-//         })
-//     })
 
-
-// };
 
 const correctionJs = () => {
     var swiper = new Swiper('.swiper-container', {
@@ -222,8 +210,6 @@ const modalOpen = () => {
             modal_container.classList.add('show');
         })
     })
-
-
 };
 
 
