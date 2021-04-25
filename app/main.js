@@ -1,4 +1,3 @@
-
 window.addEventListener(`load`, () => {
     renderMenuItems();
     renderCategoriesItems();
@@ -8,20 +7,14 @@ window.addEventListener(`load`, () => {
     dribbledShotsCount();
     modalOpen();
     closeModalOut();
-
+    popularDrop();
     getSingleCategories();
-    // galleryMenuEvents();
-    // renderGalleryMenu();
     getMenuEventIsotope();
     isoGrid();
     galleryFilterEvents();
 });
 
-
 let iso;
-
-
-
 
 const renderMenuItems = () => {
     const menuItemsHolder = document.querySelector(`.header_nav ul`);
@@ -37,19 +30,20 @@ const renderMenuItems = () => {
     }
 };
 
-
 const unitedCategories = (types) => {
-    // console.log(types);
     return types.join(" ");
 };
-// console.log(home.galeria[0]);
+
 const renderGaleriaItems = () => {
-    const galeriaItemsHolder = document.querySelector(`.grid`);style="background-color: ${home.slider[i].bgcolor}"
+    const galeriaItemsHolder = document.querySelector(`.grid`);
+    style = "background-color: ${home.slider[i].bgcolor}";
     let htmlString = "";
 
     for (let i = 0; i < home.galeria.length; i++) {
         const menuItemHTMLString = `
-            <div class="grid-item ${unitedCategories(home.galeria[i].types)} galeria_item_${home.galeria[i].index}"
+            <div class="grid-item ${unitedCategories(
+                home.galeria[i].types
+            )} galeria_item_${home.galeria[i].index}"
                 >
                 <div class="item_pic">
                     <div class="fa fa-folder"></div>
@@ -80,34 +74,28 @@ const renderGaleriaItems = () => {
     }
 };
 
-// ERROR
-
 const getSingleCategories = () => {
-
-    const categories = home.galeria.map(arrItem => arrItem.types);
+    const categories = home.galeria.map((arrItem) => arrItem.types);
     const uCat = [];
-    // console.log(categories);
 
-    categories.forEach(c => {
-        c.forEach(d => {
+    categories.forEach((c) => {
+        c.forEach((d) => {
             if (!uCat.includes(d)) {
-                uCat.push(d)
+                uCat.push(d);
             }
-        })
-    })
+        });
+    });
 
-    uCat.unshift("All")
+    uCat.unshift("All");
     uCat.sort();
-    // console.log(uCat);
     return uCat;
-
 };
 
 const renderCategoriesItems = () => {
     const filters = document.querySelector(`.galeria_aside_categories ul`);
     let htmlString = "";
     const categories = getSingleCategories();
-    categories.forEach(category => {
+    categories.forEach((category) => {
         htmlString += `
         <li data-category="${category}">${category}</li>
         `;
@@ -116,12 +104,14 @@ const renderCategoriesItems = () => {
 };
 
 const galleryMenuEvents = () => {
-    const filters = document.querySelectorAll(".galeria_aside_categories ul li");
+    const filters = document.querySelectorAll(
+        ".galeria_aside_categories ul li"
+    );
     const workItems = document.querySelectorAll(".grid-item");
-    filters.forEach(filter => {
+    filters.forEach((filter) => {
         filter.addEventListener("click", () => {
             const category = filter.dataset.category;
-            workItems.forEach(workItem => {
+            workItems.forEach((workItem) => {
                 if (workItem.classList.contains(category)) {
                     workItem.classList.remove("hidden");
                 } else {
@@ -132,19 +122,13 @@ const galleryMenuEvents = () => {
     });
 };
 
-
-
-
-tippy('.galeria_aside_filters button', {
-    animation: 'scale',
-})
-
-
-
+tippy(".galeria_aside_filters button", {
+    animation: "scale",
+});
 
 const renderSliderItems = () => {
     const sliderHolder = document.querySelector(`.swiper-wrapper`);
-    
+
     let htmlString = "";
     for (let i = 0; i < home.slider.length; i++) {
         const sliderHTMLString = `
@@ -155,7 +139,7 @@ const renderSliderItems = () => {
                     <div class="slider_left_text">
                         <h1>${home.slider[i].title}</h1>
                         <p>${home.slider[i].description}</p>
-                        <button class="cta_signup_dark">Sign up</button>
+                        <button class="cta_signup_dark">Discover</button>
 
                     </div>
                 </div>
@@ -170,24 +154,21 @@ const renderSliderItems = () => {
 
         htmlString += sliderHTMLString;
         sliderHolder.innerHTML += sliderHTMLString;
-
     }
 };
 
-
 const correctionJs = () => {
-    var swiper = new Swiper('.swiper-container', {
-        effect: 'slide',
+    var swiper = new Swiper(".swiper-container", {
+        effect: "slide",
         loop: true,
         grabCursor: true,
 
         pagination: {
-            el: '.swiper-pagination',
-
+            el: ".swiper-pagination",
         },
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
         },
     });
 };
@@ -201,134 +182,145 @@ const dribbledShotsCount = () => {
     counter.innerHTML += count;
 };
 
-
 // Modal Options
 const modalOpen = () => {
-    const openModal = document.querySelectorAll('.cta_signup_light');
+    const openModal = document.querySelectorAll(".cta_signup_light");
     openModal.forEach((mark, i) => {
-        mark.addEventListener('click', () => {
-            modal_container.classList.add('show');
-        })
-    })
+        mark.addEventListener("click", () => {
+            modal_container.classList.add("show");
+        });
+    });
 };
+const modalAnimationIn = anime({
+    targets: ".modal",
+    scale: 0.9,
+    duration: 1000,
+});
+document.querySelector(".cta_signup_light").onclick = modalAnimationIn.play;
 
+const modal_container = document.querySelector(".modal_container");
+const closeModal = document.querySelector(".close");
 
-const modal_container = document.querySelector('.modal_container');
-const closeModal = document.querySelector('.close');
-
-
-closeModal.addEventListener('click', () => {
-    modal_container.classList.remove('show');
+closeModal.addEventListener("click", () => {
+    modal_container.classList.remove("show");
 });
 
 const closeModalOut = () => {
     window.addEventListener("click", function (e) {
         if (e.target == modal_container) {
-            modal_container.classList.toggle(".close")
-
+            modal_container.classList.toggle(".close");
             setTimeout(function () {
-                modal_container.classList.remove('show');
-            })
+                modal_container.classList.remove("show");
+            });
         }
     });
 };
-
-
 
 // End Modal Options
 
+const popularDrop = () => {
+    const drop = document.getElementById("popular_drop");
+    const but = document.getElementById("popular_button");
 
-function menuToggle() {
-    const toggleMenu = document.querySelector('.popular_drop');
-    toggleMenu.classList.toggle('active');
-
-    window.addEventListener("click", function (e) {
-        if (e.target == toggleMenu) {
-            toggleMenu.classList.add("active")
-
-            setTimeout(function () {
-                toggleMenu.classList.add('active');
-            })
-        }else {
-            modal_container.classList.remove("active");
+    function showHide(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (drop.style.display == "none") {
+            drop.style.display = "block";
+        } else if (drop.style.display == "block") {
+            drop.style.display = "none";
         }
-    });
+    }
+    but.addEventListener("click", showHide, false);
 
-}
-
-
-
-let isOpen = false;
-document.addEventListener('DOMContentLoaded', () => {
-    let targets = document.getElementById('wrapper');
-    let wrapperStyle = wrapper.style;
-    let button = document.getElementById('button');
-    button.addEventListener('click', () => {
-        if (isOpen) {
-            anime({
-                targets,
-                height: 0,
-                opacity: [1, 0],
-                duration: 600,
-                easing: 'easeOutQuad',
-                complete() {
-                    isOpen = false;
-                    wrapperStyle.display = '';
-                }
-            });
-        } else {
-            isOpen = true;
-            wrapperStyle.display = 'block';
-            wrapperStyle.height = '0px';
-            anime({
-                targets,
-                height: el => el.scrollHeight,
-                opacity: [0, 1],
-                duration: 600,
-                easing: 'easeOutCubic'
-            });
-        }
-    }, false);
-}, false);
-
-
-
-const isoGrid = () => {
-    const elem = document.querySelector('.grid');
-    iso = new Isotope(elem, {
-        // options
-        itemSelector: '.grid-item',
-        layoutMode: 'fitRows',
-       
-    });
-    
+    document.addEventListener(
+        "click",
+        function (e) {
+            console.log("clic");
+            const clic = e.target;
+            console.log(clic);
+            if (drop.style.display == "block" && clic != drop) {
+                drop.style.display = "none";
+            }
+        },
+        false
+    );
 };
 
+let isOpen = false;
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+        let targets = document.getElementById("wrapper");
+        let wrapperStyle = wrapper.style;
+        let button = document.getElementById("button");
+        button.addEventListener(
+            "click",
+            () => {
+                if (isOpen) {
+                    anime({
+                        targets,
+                        height: 0,
+                        opacity: [1, 0],
+                        duration: 600,
+                        easing: "easeOutQuad",
+                        complete() {
+                            isOpen = false;
+                            wrapperStyle.display = "";
+                        },
+                    });
+                } else {
+                    isOpen = true;
+                    wrapperStyle.display = "block";
+                    wrapperStyle.height = "0px";
+                    anime({
+                        targets,
+                        height: (el) => el.scrollHeight,
+                        opacity: [0, 1],
+                        duration: 600,
+                        easing: "easeOutCubic",
+                    });
+                }
+            },
+            false
+        );
+    },
+    false
+);
+
+const isoGrid = () => {
+    const elem = document.querySelector(".grid");
+    iso = new Isotope(elem, {
+        itemSelector: ".grid-item",
+        layoutMode: "fitRows",
+    });
+};
 
 const getMenuEventIsotope = () => {
-    const galleryFilters = document.querySelectorAll(".galeria_aside_categories li") 
-    // console.log(galleryFilters);
+    const galleryFilters = document.querySelectorAll(
+        ".galeria_aside_categories li"
+    );
 
-    galleryFilters.forEach(gf => {
+    galleryFilters.forEach((gf) => {
         gf.addEventListener("click", () => {
-            const category = gf.dataset.category
+            const category = gf.dataset.category;
 
             if (category == "All") {
-                iso.arrange({ filter: `*`})
+                iso.arrange({ filter: `*` });
             } else {
-                iso.arrange({ filter: `.${category}`})
+                iso.arrange({ filter: `.${category}` });
             }
-        })
-    })
-}
-const galleryFilterEvents = () =>{
+        });
+    });
+};
+const galleryFilterEvents = () => {
     const input = document.querySelector(".text_search input");
     const workItems = document.querySelectorAll(".grid-item");
-    input.addEventListener("keyup", () =>{
+    input.addEventListener("keyup", () => {
         const value = input.value;
 
-        workItems.forEach(workItem => {
-            const title = workItem.querySelector(".data_profile h4")
+        workItems.forEach((workItem) => {
+            const title = workItem.querySelector(".data_profile h4");
             if (title.innerHTML.includes(value)) {
                 workItem.classList.remove("hidden");
             } else {
@@ -337,6 +329,4 @@ const galleryFilterEvents = () =>{
         });
     });
 };
-const textSearchIso = () =>{
-
-};
+const textSearchIso = () => {};

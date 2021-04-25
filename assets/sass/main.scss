@@ -1,14 +1,16 @@
-@import 'lib/vars';
-@import 'lib/mixins';
-@import 'lib/reboot';
-@import 'lib/fontawesome/font-awesome';
-@import 'lib/fontface';
-@import 'lib/keyframes';
+@import "lib/vars";
+@import "lib/mixins";
+@import "lib/reboot";
+@import "lib/fontawesome/font-awesome";
+@import "lib/fontface";
+@import "lib/keyframes";
 
-@import './slider';
+@import "./partials/header";
+@import "./partials/slider";
+@import "./partials/galeria";
+@import "./partials/footer";
 
-
-$corporateColor:#ea4c89;
+$corporateColor: #ea4c89;
 $base: 8px;
 
 // * {
@@ -23,428 +25,68 @@ body {
     color: $body_color;
     min-height: 100vh;
 }
-h1{
-    font-size: $base*6.5;
-    line-height: $base*7;
+h1 {
+    font-size: $base * 6.5;
+    line-height: $base * 7;
 }
-h2{
-    font-size: $base*4;
+h2 {
+    font-size: $base * 4;
 }
-h3{
-    font-size: $base*3;
+h3 {
+    font-size: $base * 3;
 }
-h4{
-    font-size: $base*2;
+h4 {
+    font-size: $base * 2;
     margin: 0;
 }
-p{
-    margin:0;
+p {
+    margin: 0;
 }
-input{
+input {
     background-color: rgb(241, 241, 241);
     border: none;
     border-radius: 10px;
     outline: 0;
-
 }
 
-
-.header{
-    background-color: rgb(223, 235, 236);
-    .header_holder{
-        display: flex;
-        justify-content: space-between;
-        height: $base*10;
-        padding:0 4em;
-        .header_logo{
-            display: flex;
-            align-items: center;
-            
-            img{
-                max-width: 5rem;
-
-            }
-        }
-        .header_navigation{
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            align-items: center;
-            .header_nav{
-                
-                ul{
-                    list-style: none;
-                    
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    padding:0;
-                    margin:0;
-                    li{
-                        padding-left: $base*4;
-                        display: flex;
-                        align-items: center;
-                        a{
-                            font-weight: bold;
-                            color: rgb(119, 119, 119);
-                            &:hover{
-                                color: rgb(255, 134, 154);
-
-                            }
-                            
-                        }
-
-                    }
-                }
-            }
-            .header_ctas{
-                display: flex;
-                align-items: center;
-                .header_search{
-                    font-size: $base*3;
-
-                }
-                .header_signin{
-                    padding: $base*2;
-
-                }
-                
-            }
-        }
-    }
-
-}
-.cta_signup_dark{
+.cta_signup_dark {
     background-color: $corporateColor;
-    box-shadow:8px 8px 16px rgba(20, 20, 20, 0.8),
-                -8px -8px 16px rgba(94, 94, 94, 0.8);
+    box-shadow: 8px 8px 16px rgba(20, 20, 20, 0.8),
+        -8px -8px 16px rgba(94, 94, 94, 0.8);
     color: #ffcade;
-    font-weight:normal;
+    font-weight: normal;
     border-radius: $base;
-    padding: $base $base*2;
+    padding: $base $base * 2;
     border: none;
-
 }
-.cta_signup_dark:active{
-    box-shadow:inset 8px 8px 16px rgba(52, 52, 52, 0.537),
-                inset -8px -8px 16px #ffa2c6a0;
+.cta_signup_dark:active {
+    box-shadow: inset 8px 8px 16px rgba(52, 52, 52, 0.537),
+        inset -8px -8px 16px #ffa2c6a0;
     color: rgb(194, 194, 194);
-
 }
-.cta_signup_dark:focus{
-    outline:none;
-
+.cta_signup_dark:focus {
+    outline: none;
 }
-.cta_signup_light{
-    background-color:$corporateColor;
-    box-shadow:8px 8px 16px rgba(165, 177, 198, 0.8),
-    -8px -8px 16px rgba(255, 255, 255, 0.932);
+.cta_signup_light {
+    background-color: $corporateColor;
+    box-shadow: 8px 8px 16px rgba(165, 177, 198, 0.8),
+        -8px -8px 16px rgba(255, 255, 255, 0.932);
     color: #ffcade;
-    font-weight:normal;
+    font-weight: normal;
     border-radius: $base;
-    padding: $base $base*2;
+    padding: $base $base * 2;
     border: none;
-
 }
-.cta_signup_light:active{
-    box-shadow:inset 8px 8px 16px rgba(52, 52, 52, 0.299),
-                inset -8px -8px 16px #ffa2c6a0;
+.cta_signup_light:active {
+    box-shadow: inset 8px 8px 16px rgba(52, 52, 52, 0.299),
+        inset -8px -8px 16px #ffa2c6a0;
     color: rgb(194, 194, 194);
-
 }
-.cta_signup_light:focus{
-    outline:none;
-
+.cta_signup_light:focus {
+    outline: none;
 }
-
-.galeria{
-    .galeria_holder{
-        display: flex;
-        padding:4em;
-        background-color: rgb(223, 235, 236);
-        max-height: 1000px +1;
-        
-        .galeria_aside{
-            margin-right: $base*3;
-            background-color: rgb(223, 235, 236);
-            padding: 1.5rem 4rem;
-            border-radius: $base;
-            height: 90%;
-            box-shadow:8px 8px 16px rgba(165, 177, 198, 0.8),
-                -8px -8px 16px rgba(255, 255, 255, 0.8);
-            .galeria_aside_filters{
-                display: flex;
-                flex-direction: column;
-                padding-bottom: 1.5rem;
-                .text_search{
-                    display: flex;
-                    margin-bottom: 1em;
-                    input{
-                       margin-right: 1em;
-                    }
-                    button{
-                        border: none;
-                        background-color: rgb(223, 235, 236);
-                        box-shadow:8px 8px 16px rgba(165, 177, 198, 0.8),
-                        -8px -8px 16px rgba(255, 255, 255, 0.8);
-                        border-radius: $base;
-                        
-                    }
-                }
-                .popular_button{
-                    margin-bottom: 1.5rem;
-                    border:none;
-                    box-shadow:8px 8px 16px rgba(165, 177, 198, 0.8),
-                    -8px -8px 16px rgba(255, 255, 255, 0.8);
-                    border-radius: $base;
-                    background-color:rgb(223, 235, 236);
-                    color: rgb(111, 111, 111);
-                    cursor:pointer;
-                }
-                .popular_button:active{
-                    background-color:rgb(223, 235, 236);
-                    box-shadow: inset 3px 3px 14px #cccdd1,
-                                inset -3px -3px 14px rgb(255, 255, 255);
-                    
-                }
-                .popular_button:focus{
-                    outline: none;
-                }
-                .popular_drop{
-                    position: absolute;
-                    top:46em;
-                    // position: relative;
-                    background-color: white;
-                    list-style-type: none;
-                    padding:$base*2;
-                    border-radius: 10px;
-                    width: 12em;
-                    visibility: hidden;
-                    &.active{
-                        visibility: visible;
-                    }
-                  
-                    li{
-
-                    }
-                    li:hover{
-                        color: $corporateColor;
-                    }
-                }
-            }
-            .galeria_aside_categories{
-                ul{
-                    list-style-type: none;
-                    padding: 0;
-                    li{
-                        cursor: pointer;
-                        
-                        a{
-                            color: black;
-                            
-                        }
-                    }
-                    li:hover{
-                        color: $corporateColor;
-                    }
-                }
-            }
-        }
-        .grid{
-           
-            width: 100%;
-            
-            // display: grid;
-            // grid-template-columns: 1fr 1fr 1fr 1fr;
-            // column-gap: 10px;
-            // row-gap: 20px;          
-            
-            .grid-item{
-                
-                height: 300px;
-                padding: 1rem;
-                margin:0 1em 1em 0;
-                border-radius: $base;
-                overflow: hidden;
-                box-shadow:8px 8px 16px rgba(165, 177, 198, 0.8),
-                -8px -8px 16px rgba(255, 255, 255, 0.8);
-                float: left;
-                
-              
-                
-                &.hidden{
-                    display: none;
-                }
-                &.Animation {
-                  width: 25% !important ;
-                }
-                &.Branding{
-                   width: 30%;
-                }
-                &.Illustration{
-                 
-                }
-                
-                
-               
-                
-                
-                .item_pic{
-                    overflow: hidden;
-                    height: 239.19px;
-                    display: flex;
-                    justify-content: start;
-                    
-                  
-                    
-                    .fa{
-                        position: relative;
-                        top: 20px;
-                        left: 85%;
-                        color:$corporateColor;
-                        font-size: $base*3;
-                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.394);
-                        background-color: rgba(0, 0, 0, 0.112);
-                        height: 24px;
-                        border-radius: 100px;
-                    }
-                    .item_imagen{
-                        width: 100%;
-                        
-                        img{
-                            width:350px;
-                            text-align: center;
-                        }
-                       
-                    }
-                    
-                }
-               
-                .item_data{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding-top: $base;
-                    .data_profile{
-                        display: flex;
-                        align-items: center;
-
-                        img{
-                            width: 30px;
-                            height: 30px;
-                            border-radius: 100px;
-                            margin-right: $base;
-                        }
-                        h4{
-                            font-size: $base*2;
-                        }
-
-                    }
-                    .data_views{
-                        display: flex;
-                        align-items: center;
-                        .likes{
-                            display: flex;
-                            align-items: center;
-                            p{
-                                padding-left:5px;
-                                margin: 0;
-                            }
-                        }
-                        .views{
-                            display: flex;
-                            align-items: center;
-                            font-size: $base*2;
-                            padding-left: $base;
-                            p{
-                                padding-left: 5px;
-                                margin: 0;
-                            }
-                        }
-
-                    }
-                }
-
-            }
-            
-           
-
-
-        }
-    }
-}
-footer{
-    .footer_holder{
-        padding:0 4em;
-        background-color: rgb(217, 228, 230);
-        .footer_up{
-            display: flex   ;
-            padding:5rem 0 3rem;
-            .footer_left{
-                width: 20%;
-                display: flex;
-                flex-direction: column;
-                margin-right: 5rem;
-                
-                img{
-                    max-width: 5rem;
-                    padding-bottom: $base*3;
-                }
-                p{
-                    padding-bottom: $base*5;
-                }
-                .fa{
-                    font-size: $base*3;
-                    margin-right: 1rem;
-                }
-            }
-            .footer_right{
-                width: 80%;
-                display: flex;
-                
-                .listas{
-                    width: 100%;
-                    display: flex;
-                    justify-content: start;
-                    .lista{
-                        padding-right: $base*10;
-                        ul{
-                            list-style-type: none;
-                            padding: 0;
-                        }
-                    }
-                    
-                }
-            }
-        }
-        .footer_bottom{
-            padding:2rem 0 2rem;
-            border-top: 1px solid grey;
-            display: flex;
-            justify-content: space-between;
-            .shots{
-                display: flex;
-                align-items: center;
-                p{
-                    padding-right: $base*2;
-                    span{
-                        font-weight: bold;
-                    }
-                }
-                .fa{
-                    font-size: $base*3;
-                    background-color: $corporateColor;
-                    border-radius: 100px;
-                }
-            }
-        }
-        
-    }
-}
-
 
 // modal
-
 
 .modal_container {
     display: flex;
@@ -475,7 +117,7 @@ footer{
         text-align: center;
         border-radius: $base;
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.301);
-        
+
         .modal_header {
             text-align: left;
             .modal_header_icon {
@@ -489,21 +131,17 @@ footer{
             .modal_header_tittle {
                 padding-top: 2rem;
                 h3 {
-                    
-                    span{
+                    span {
                         color: $corporateColor;
                     }
                 }
             }
         }
         .modal_contenido {
-
-
             .modal_redes {
                 display: flex;
                 justify-content: space-around;
                 .modal_red {
-                    
                     padding: 1rem 1rem 1rem 0;
                     width: 300px;
                     margin-left: auto;
@@ -520,198 +158,130 @@ footer{
                     }
                 }
             }
-            .modal_inputs{
-
-                
-                .modal_divisor{
+            .modal_inputs {
+                .modal_divisor {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    .divisor_line{
+                    .divisor_line {
                         width: 47%;
                         height: 0;
                         border: 0.5px solid black;
                         margin: $base;
                     }
                 }
-                .modal_inputs_items{
-                    .modal_inputs_names{
+                .modal_inputs_items {
+                    .modal_inputs_names {
                         display: flex;
                         justify-content: space-between;
-                        .input_name{
+                        .input_name {
                             width: 45%;
                             display: flex;
                             flex-direction: column;
                             align-items: flex-start;
-                            input{
+                            input {
                                 width: 100%;
                                 padding: 10px;
                             }
                         }
-                        .input_username{
+                        .input_username {
                             width: 45%;
                             display: flex;
                             flex-direction: column;
                             align-items: flex-start;
-                            input{
+                            input {
                                 width: 100%;
                                 padding: 10px;
                             }
                         }
                     }
-                    .modal_inputs_mail{
-                        .input_email{
+                    .modal_inputs_mail {
+                        .input_email {
                             width: 100%;
                             display: flex;
                             flex-direction: column;
                             align-items: flex-start;
-                            input{
+                            input {
                                 width: 100%;
                                 padding: 10px;
                             }
                         }
-                        .input_password{
+                        .input_password {
                             width: 100%;
                             display: flex;
                             flex-direction: column;
                             align-items: flex-start;
-                            input{
+                            input {
                                 width: 100%;
                                 padding: 10px;
                             }
-                            input:hover{
+                            input:hover {
                                 background-color: rgb(255, 255, 255);
-                                border:0.5px solid rgb(233, 233, 233);
-                                box-shadow:8px 8px 8px rgba(255, 144, 218, 0.211),
-                -8px -8px 8px rgba(255, 144, 218, 0.217);
+                                border: 0.5px solid rgb(233, 233, 233);
+                                box-shadow: 8px 8px 8px
+                                        rgba(255, 144, 218, 0.211),
+                                    -8px -8px 8px rgba(255, 144, 218, 0.217);
                             }
                         }
-
                     }
-                    .modal_inputs_check{
+                    .modal_inputs_check {
                         display: flex;
-                        
                         justify-content: start;
                         align-items: center;
-                      
-                        .check{
-                            input{
-
-                            }
-                           
-                        }
-                        .check_text{
-                            p{
-                                font-size: $base*2;
-                                margin-left: $base;
-                                font-weight: lighter;
-                            }
+                    }
+                    .check_text {
+                        p {
+                            font-size: $base * 2;
+                            margin-left: $base;
+                            font-weight: lighter;
                         }
                     }
                 }
-                .modal_create{
-                    
-                    display: flex;
-                    justify-content: start;
-                    button{
-                        background-color:$corporateColor ;
-                        color: white;
-                        margin-top: 1em;
-                        padding: 0.5rem 3rem;
-                        border-radius: 10px;
-                        border:none;
-                        outline:none;
-                        
-                    }
-                    button:hover{
-                        background-color: rgb(235, 129, 177);
-                    }
+            }
+            .modal_create {
+                display: flex;
+                justify-content: start;
+                button {
+                    background-color: $corporateColor;
+                    color: white;
+                    margin-top: 1em;
+                    padding: 0.5rem 3rem;
+                    border-radius: 10px;
+                    border: none;
+                    outline: none;
+                }
+                button:hover {
+                    background-color: rgb(235, 129, 177);
                 }
             }
-            .signin{
-                margin-top: 1em;
+        }
+        .signin {
+            margin-top: 1em;
+            text-align: left;
+            p {
                 text-align: left;
-                p{
-                    text-align: left;
-                    font-size: $base*2;
-                    a{
-                        color: $corporateColor;
-                        padding-left: $base;
-                    }
+                font-size: $base * 2;
+                a {
+                    color: $corporateColor;
+                    padding-left: $base;
                 }
             }
-            p{
-                text-align: left;
-                margin-top: 1em;
-                font-size: $base;
-
-            }
+        }
+        p {
+            text-align: left;
+            margin-top: 1em;
+            font-size: $base;
         }
     }
 }
-.input_del_modal{
+
+.input_del_modal {
     width: 100%;
     padding: 10px;
 }
-.input_del_modal:hover{
+.input_del_modal:hover {
     background-color: rgb(255, 255, 255);
-    border:0.5px solid rgb(233, 233, 233);
-    box-shadow:8px 8px 8px rgba(255, 144, 218, 0.211),
--8px -8px 8px rgba(255, 144, 218, 0.217);
+    border: 0.5px solid rgb(233, 233, 233);
+    box-shadow: 8px 8px 8px rgba(255, 144, 218, 0.211),
+        -8px -8px 8px rgba(255, 144, 218, 0.217);
 }
-
-
-
-
-.animated_button {
-    
-    height: 100%;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    
-  }
-  
-  #wrapper {
-    overflow: hidden;
-    display: none;
-    
-  }
-  
-  .dropdown_animated {
-    padding: 0;
-    
-    border-radius: 2px;
-
-    ul{
-        list-style-type: none;
-        padding:0;
-        
-        li{
-            margin-bottom: 1em;
-            a{
-                color: black;
-            }
-            input{
-                width: 100%;
-            }
-        }
-    }
-  }
-  
-  #button {
-    padding: 0.3em 1em;
-    border: none;
-    margin-top: 1em;
-    border-radius: 2px;
-    
-    cursor: pointer;
-    box-shadow:8px 8px 16px rgba(165, 177, 198, 0.8),
-                    -8px -8px 16px rgba(255, 255, 255, 0.8);
-                    border-radius: $base;
-                    background-color:rgb(223, 235, 236);
-                    color: rgb(111, 111, 111);
-    
-                    
-  }
